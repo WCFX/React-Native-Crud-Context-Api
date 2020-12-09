@@ -55,7 +55,7 @@ const Home = () => {
               </Contacts>
 
               <ContainerButtonOptions>
-                <ButtonOptions>
+                <ButtonOptions onPress={() => handleNavigateToPerfilUser(user)}>
                   <AntDesign name="edit" size={24} color="#38e079" />
                 </ButtonOptions>
                 <ButtonOptions onPress={() => handleConfirmUserToDelete(user)}>
