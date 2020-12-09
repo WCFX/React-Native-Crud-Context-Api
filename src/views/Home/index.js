@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
+import { Alert } from 'react-native';
 import {
   Container,
   Title,
@@ -22,10 +23,23 @@ const Home = () => {
   function handleNavigateToPerfilUser(user) {
     navigate('UserForm', user);
   }
+
+  function handleConfirmUserToDelete(user) {
+    Alert.alert('Excluir usuário', 'Você deseja excluir o usuário ?', [
+      {
+        text: 'Sim',
+        onPress() {
+          console.warn('Delete', user.id);
+        },
+      },
+      {
+        text: 'Não',
+      },
+    ]);
+  }
   return (
     <Container>
       <List
-        keyExtractor={(item) => item.id.toString()}
         data={data}
         renderItem={({ item: user }) => (
           <ContainerUsers>
@@ -42,15 +56,16 @@ const Home = () => {
 
               <ContainerButtonOptions>
                 <ButtonOptions>
-                  <AntDesign name="edit" size={24} color="#fff" />
+                  <AntDesign name="edit" size={24} color="#38e079" />
                 </ButtonOptions>
-                <ButtonOptions>
-                  <AntDesign name="delete" size={24} color="#fff" />
+                <ButtonOptions onPress={() => handleConfirmUserToDelete(user)}>
+                  <AntDesign name="delete" size={24} color="#eb506f" />
                 </ButtonOptions>
               </ContainerButtonOptions>
             </ContainerImg>
           </ContainerUsers>
         )}
+        keyExtractor={(item) => item.id.toString()}
       />
     </Container>
   );

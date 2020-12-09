@@ -9,6 +9,7 @@ export const Title = styled.Text`
   font-size: 18px;
   color: #8473d9;
   font-weight: bold;
+  text-decoration: underline;
 `;
 
 export const ContainerUsers = styled.View`
@@ -23,7 +24,7 @@ export const Avatar = styled.Image`
   width: 80px;
   height: 80px;
   border-radius: 50px;
-  border: 3px solid #0ead4b;
+  border: 3px solid #38e079;
 `;
 
 export const Contacts = styled.View`
