@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import { UserContext } from '../../context/UserContext';
 import {
   Container,
@@ -12,13 +12,14 @@ import {
   ContainerButton,
 } from './styles';
 
-const UserForm = ({ route, params }) => {
+const NewUser = ({ route, params }) => {
   const [user, setUser] = useState(route.params ? route.params : {});
   const { dispatch } = useContext(UserContext);
+
   const { goBack } = useNavigation();
 
-  function handleUpdateUser() {
-    dispatch({ type: 'updateUser', payload: user });
+  function handleAddNewUser() {
+    dispatch({ type: 'createUser', payload: user });
     goBack('Home');
   }
 
@@ -47,9 +48,9 @@ const UserForm = ({ route, params }) => {
           placeholder="Informe a URL do Avatar"
         />
         <ContainerButton>
-          <SaveButton onPress={handleUpdateUser}>
+          <SaveButton onPress={handleAddNewUser}>
             <Feather name="save" size={24} color="#38e079" />
-            <SaveButtonText>Salvar</SaveButtonText>
+            <SaveButtonText>Salvar Novo Usuário</SaveButtonText>
           </SaveButton>
         </ContainerButton>
       </FormArea>
@@ -57,4 +58,4 @@ const UserForm = ({ route, params }) => {
   );
 };
 
-export default UserForm;
+export default NewUser;

@@ -18,7 +18,7 @@ import {
 
 const Home = (props) => {
   const { navigate } = useNavigation();
-  const { state } = useContext(UserContext);
+  const { state, dispatch } = useContext(UserContext);
 
   function handleNavigateToPerfilUser(user) {
     navigate('UserForm', user);
@@ -29,7 +29,10 @@ const Home = (props) => {
       {
         text: 'Sim',
         onPress() {
-          console.warn('Delete', user.id);
+          dispatch({
+            type: 'deleteUser',
+            payload: user,
+          });
         },
       },
       {

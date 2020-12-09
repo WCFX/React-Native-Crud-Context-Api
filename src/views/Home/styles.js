@@ -24,7 +24,7 @@ export const Avatar = styled.Image`
   width: 80px;
   height: 80px;
   border-radius: 50px;
-  border: 3px solid #38e079;
+  border: 3px #38e079;
 `;
 
 export const Contacts = styled.View`

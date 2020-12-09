@@ -14,11 +14,11 @@ const ButtonText = styled.Text``;
 export const ButtonRight = () => {
   const { navigate } = useNavigation();
 
-  function handleNavigationToAddUser() {
-    navigate('UserForm');
+  function handleNavigationToAddUser(user) {
+    navigate('NewUser', user);
   }
   return (
-    <Button onPress={handleNavigationToAddUser}>
+    <Button onPress={() => handleNavigationToAddUser()}>
       <ButtonText>
         <Feather name="user-plus" size={34} color="#4527db" />
       </ButtonText>
