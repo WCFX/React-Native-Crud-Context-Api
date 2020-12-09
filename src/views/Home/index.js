@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import { Alert } from 'react-native';
+import { UserContext } from '../../context/UserContext';
 import {
   Container,
   Title,
@@ -15,10 +16,9 @@ import {
   ButtonOptions,
 } from './styles';
 
-import data from '../../data';
-
-const Home = () => {
+const Home = (props) => {
   const { navigate } = useNavigation();
+  const { state } = useContext(UserContext);
 
   function handleNavigateToPerfilUser(user) {
     navigate('UserForm', user);
@@ -40,7 +40,7 @@ const Home = () => {
   return (
     <Container>
       <List
-        data={data}
+        data={state.users}
         renderItem={({ item: user }) => (
           <ContainerUsers>
             <ContainerImg

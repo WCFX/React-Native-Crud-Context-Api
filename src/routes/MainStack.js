@@ -10,18 +10,22 @@ const { Navigator, Screen } = createStackNavigator();
 export default () => (
   <Navigator
     screenOptions={{
-      headerTitle: 'Lista de usuários',
       headerTitleAlign: 'center',
       headerTintColor: '#4527db',
     }}
   >
     <Screen
       options={{
+        headerTitle: 'Lista de usuários',
         headerRight: () => <ButtonRight />,
       }}
       name="Home"
       component={Home}
     />
-    <Screen name="UserForm" component={UserForm} />
+    <Screen
+      options={{ headerTitle: 'Formulário' }}
+      name="UserForm"
+      component={UserForm}
+    />
   </Navigator>
 );

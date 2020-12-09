@@ -12,7 +12,8 @@ import {
 
 const UserForm = ({ route, params }) => {
   const [user, setUser] = useState(route.params ? route.params : {});
-  const [email, setEmail] = useState(route.params ? route.params : {});
+  // const [email, setEmail] = useState(route.params ? route.params : {});
+  // const [avatar, setAvatar] = useState(route.params ? route.params : {});
 
   return (
     <Container>
