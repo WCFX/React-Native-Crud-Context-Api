@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { AntDesign } from '@expo/vector-icons';
 import {
   Container,
   Title,
@@ -9,6 +10,8 @@ import {
   Avatar,
   Contacts,
   ContainerImg,
+  ContainerButtonOptions,
+  ButtonOptions,
 } from './styles';
 
 import data from '../../data';
@@ -16,27 +19,36 @@ import data from '../../data';
 const Home = () => {
   const { navigate } = useNavigation();
 
-  function handleNavigateToPerfilUser() {
-    navigate('UserForm');
+  function handleNavigateToPerfilUser(user) {
+    navigate('UserForm', user);
   }
   return (
     <Container>
       <List
         keyExtractor={(item) => item.id.toString()}
         data={data}
-        renderItem={({ item }) => (
+        renderItem={({ item: user }) => (
           <ContainerUsers>
-            <ButtonUser onPress={handleNavigateToPerfilUser}>
-              <ContainerImg
-                style={{ borderBottomWidth: 1, borderBottomColor: '#424242' }}
-              >
-                <Avatar source={{ uri: item.avatar_url }} />
-                <Contacts>
-                  <Title>{item.name}</Title>
-                  <Title>{item.email}</Title>
-                </Contacts>
-              </ContainerImg>
-            </ButtonUser>
+            <ContainerImg
+              style={{ borderBottomWidth: 1, borderBottomColor: '#424242' }}
+            >
+              <Avatar source={{ uri: user.avatar_url }} />
+              <Contacts>
+                <ButtonUser onPress={() => handleNavigateToPerfilUser(user)}>
+                  <Title>{user.name}</Title>
+                  <Title>{user.email}</Title>
+                </ButtonUser>
+              </Contacts>
+
+              <ContainerButtonOptions>
+                <ButtonOptions>
+                  <AntDesign name="edit" size={24} color="#fff" />
+                </ButtonOptions>
+                <ButtonOptions>
+                  <AntDesign name="delete" size={24} color="#fff" />
+                </ButtonOptions>
+              </ContainerButtonOptions>
+            </ContainerImg>
           </ContainerUsers>
         )}
       />
